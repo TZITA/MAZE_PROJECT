@@ -19,7 +19,47 @@ int isCollision(double x, double y)
 }
 
 /**
- * movePlayer - Function to handle keyboard inputs and player movement
+ * movePlayerPos - Function to handle player movement
+ * @init: sdlinit struct
+ * @nextX: player next x pos
+ * @nextY: player next y pos
+ */
+void movePlayerPos(sdlinit *init, double nextX, double nextY)
+{
+	if (!isCollision(nextX, nextY))
+	{
+		init->player.x = nextX;
+		init->player.y = nextY;
+	}
+	if (isCollision(nextX, nextY) && worldMap[(int)nextX][(int)nextY] == 3)
+	{
+		init->player.x = rand() % mapW;
+		init->player.y = rand() % mapH;
+	}
+}
+
+/**
+ * rotatePlayerDir - Function to handle player rotation
+ * @init: sdlinit struct
+ * @angle: rotaion degree
+ */
+void rotatePlayerDir(sdlinit *init, double angle)
+{
+	double oldDirX = init->player.dirX;
+	double oldPlaneX = init->player.planeX;
+
+	init->player.dirX =
+		init->player.dirX * cos(angle) - init->player.dirY * sin(angle);
+	init->player.dirY =
+		oldDirX * sin(angle) + init->player.dirY * cos(angle);
+	init->player.planeX =
+		init->player.planeX * cos(angle) - init->player.planeY * sin(angle);
+	init->player.planeY =
+		oldPlaneX * sin(angle) + init->player.planeY * cos(angle);
+}
+
+/**
+ * movePlayer - Function to handle keyboard input
  * @init: sdlinit struct
  * @event: SDL event
  */
@@ -29,63 +69,31 @@ void movePlayer(sdlinit *init, SDL_Event *event)
 	{
 		double nextX = init->player.x + init->player.dirX * 0.1;
 		double nextY = init->player.y + init->player.dirY * 0.1;
-		double oldDirX = init->player.dirX;
-		double oldPlaneX = init->player.planeX;
 
 		switch (event->key.keysym.sym)
 		{
 			case SDLK_UP:
 			case SDLK_w:
 				{
-					if (!isCollision(nextX, nextY))
-					{
-						init->player.x = nextX;
-						init->player.y = nextY;
-					}
-					if (isCollision(nextX, nextY) && worldMap[(int)nextX][(int)nextY] == 3)
-					{
-						init->player.x = rand() % mapW;
-						init->player.y = rand() % mapH;
-					}
+					movePlayerPos(init, nextX, nextY);
 				}
 				break;
 			case SDLK_DOWN:
 			case SDLK_s:
 				{
-					if (!isCollision(nextX, nextY))
-					{
-						init->player.x = nextX;
-						init->player.y = nextY;
-					}
-					if (isCollision(nextX, nextY) && worldMap[(int)nextX][(int)nextY] == 3)
-					{
-						init->player.x = rand() % mapW;
-						init->player.y = rand() % mapH;
-					}
+					movePlayerPos(init, nextX, nextY);
 				}
 				break;
 			case SDLK_RIGHT:
 			case SDLK_d:
 				{
-					init->player.dirX =
-						init->player.dirX * cos(0.1) - init->player.dirY * sin(0.1);
-					init->player.dirY = oldDirX * sin(0.1) + init->player.dirY * cos(0.1);
-					init->player.planeX =
-						init->player.planeX * cos(0.1) - init->player.planeY * sin(0.1);
-					init->player.planeY =
-						oldPlaneX * sin(0.1) + init->player.planeY * cos(0.1);
+					rotatePlayerDir(init, 0.1);
 				}
 				break;
 			case SDLK_LEFT:
 			case SDLK_a:
 				{
-					init->player.dirX =
-						init->player.dirX * cos(-0.1) - init->player.dirY * sin(-0.1);
-					init->player.dirY = oldDirX * sin(-0.1) + init->player.dirY * cos(-0.1);
-					init->player.planeX =
-						init->player.planeX * cos(-0.1) - init->player.planeY * sin(-0.1);
-					init->player.planeY =
-						oldPlaneX * sin(-0.1) + init->player.planeY * cos(-0.1);
+					rotatePlayerDir(init, -0.1);
 				}
 				break;
 		}
