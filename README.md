@@ -1,24 +1,24 @@
 # Raycasting Game Engine
-This is a simple raycasting game engine written in C using SDL (Simple DirectMedia Layer) library. The engine designed to have a basic first-person perspective game similar to Wolfenstein 3D.<br \>
+This is a simple raycasting game engine written in C using SDL (Simple DirectMedia Layer) library. The engine designed to have a basic first-person perspective game similar to Wolfenstein 3D.<br>
 
 ## How it Works
 The engine uses a raycasting technique to render a 3D perspective view of a game world on a 2D screen. It creates a 2D grid representation of the game world and casts rays from the player's position to determine the distance to walls and other objects in the game. Based on the distance and the player's view angle, the engine calculates the height of the walls to create a 3D illusion. The engine handles collision detection, movement, and rendering.
 
 ## Features
-First-person perspective view
-Collision detection with walls
-Basic movement controls (forward, backward, turn left, turn right)
-Simple rendering of objects and environment
+First-person perspective view<br>
+Collision detection with walls<br>
+Basic movement controls (forward, backward, turn left, turn right)<br>
+Simple rendering of objects and environment<br>
 
 ## Usage
-Clone the repository to your local machine.<br \>
-Install the necessary dependencies (SDL2 library).<br \>
-Compile the code using a C compiler. Example, 'gcc *.c -o maze -lm -lSDL2'<br \>
-Run the compiled executable to start the game. ./maze<br \>
+Clone the repository to your local machine.<br>
+Install the necessary dependencies (SDL2 library).<br>
+Compile the code using a C compiler. Example, 'gcc *.c -o maze -lm -lSDL2'.<br>
+Run the compiled executable to start the game. ./maze<br>
 
 ## File Structure
-headers directory<br \>
-	1. myheader.h: Header file defining the structures and function prototypes used in the game engine.<br \>
+headers directory<br>
+	1. myheader.h: Header file defining the structures and function prototypes used in the game engine.<br>
 
 src directory<br \>
 	1. main.c: Contains the main function and rendering code.<br \>
