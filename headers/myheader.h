@@ -60,7 +60,9 @@ void drawWalls(sdlinit *init, int x, int drawStart, int drawEnd, int side,
 		int mapX, int mapY);
 void renderAll(sdlinit *init);
 
-/*Function to move the player*/
+/*Function to move the player and handle keyboard events*/
+void movePlayerPos(sdlinit *init, double nextX, double nextY);
+void rotatePlayerDir(sdlinit *init, double angle);
 void movePlayer(sdlinit *init, SDL_Event *event);
 
 /*Map*/
