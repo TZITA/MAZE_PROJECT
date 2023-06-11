@@ -81,6 +81,8 @@ void movePlayer(sdlinit *init, SDL_Event *event)
 			case SDLK_DOWN:
 			case SDLK_s:
 				{
+					nextX -= 2 * (init->player.dirX * 0.1);
+					nextY -= 2 * (init->player.dirY * 0.1);
 					movePlayerPos(init, nextX, nextY);
 				}
 				break;
