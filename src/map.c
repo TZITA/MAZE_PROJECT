@@ -1,6 +1,6 @@
 #include "../headers/myheader.h"
 
-/*map*/
+/*2D map*/
 int worldMap[mapW][mapH] = {
 	{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 		1, 1, 1, 1, 1, 1, 1},

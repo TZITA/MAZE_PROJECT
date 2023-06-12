@@ -41,7 +41,7 @@ void calculateRayCast(sdlinit *init, double *rayDirX, double *rayDirY,
 		*sideDistY = (*mapY + 1.0 - init->player.y) * (*deltaDistY);
 	}
 
-	while (*hit == 0)
+	while (*hit == 0) /*Projection of rays from player untill they hit a wall*/
 	{
 		if (*sideDistX < *sideDistY)
 		{
@@ -57,6 +57,7 @@ void calculateRayCast(sdlinit *init, double *rayDirX, double *rayDirY,
 		if (worldMap[*mapX][*mapY] > 0)
 			*hit = 1;
 	}
+	/*Perpendicular distance to wall to prevent fish-eye distortion*/
 	if (*side == 0)
 		*perpWallDist = (*mapX - init->player.x + (1 - *stepX) / 2) / (*rayDirX);
 	else
@@ -96,7 +97,7 @@ void drawWalls(sdlinit *init, int x, int drawStart, int drawEnd, int side,
 		color = SDL_MapRGBA(SDL_AllocFormat(SDL_PIXELFORMAT_RGBA32),
 				200, 64, 64, 255);
 
-	if (side == 1)
+	if (side == 1)/*Make one side of walls darker*/
 		color -= 15;
 
 	for (int y = 0; y < SCREEN_H; y++)

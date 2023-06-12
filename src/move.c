@@ -26,11 +26,16 @@ int isCollision(double x, double y)
  */
 void movePlayerPos(sdlinit *init, double nextX, double nextY)
 {
+	/*If no collision, move player by nextX and nextY values*/
 	if (!isCollision(nextX, nextY))
 	{
 		init->player.x = nextX;
 		init->player.y = nextY;
 	}
+	/*
+	 * If collision occurs, and if the wall is of number 3
+	 * move player in a random place in the map.
+	 */
 	if (isCollision(nextX, nextY) && worldMap[(int)nextX][(int)nextY] == 3)
 	{
 		init->player.x = rand() % mapW;
@@ -65,7 +70,7 @@ void rotatePlayerDir(sdlinit *init, double angle)
  */
 void movePlayer(sdlinit *init, SDL_Event *event)
 {
-	if (event->type == SDL_KEYDOWN)
+	if (event->type == SDL_KEYDOWN) /*In the event a key is pressed*/
 	{
 		double nextX = init->player.x + init->player.dirX * 0.1;
 		double nextY = init->player.y + init->player.dirY * 0.1;

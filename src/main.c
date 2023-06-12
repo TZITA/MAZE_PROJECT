@@ -7,7 +7,7 @@
  */
 int main(void)
 {
-	if (SDL_Init(SDL_INIT_VIDEO) != 0)
+	if (SDL_Init(SDL_INIT_VIDEO) != 0) /*Initialization of SDL video*/
 	{
 		printf("Failed to initialize SDL: %s", SDL_GetError());
 		return (1);

@@ -65,7 +65,7 @@ void movePlayerPos(sdlinit *init, double nextX, double nextY);
 void rotatePlayerDir(sdlinit *init, double angle);
 void movePlayer(sdlinit *init, SDL_Event *event);
 
-/*Map*/
+/*2D Map*/
 extern int worldMap[mapW][mapH];
 
 #endif /*MYHEADER_H*/

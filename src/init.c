@@ -8,6 +8,7 @@
  */
 int Init(sdlinit *init)
 {
+	/*Creating an SDL window*/
 	init->window = SDL_CreateWindow("FIND THE RED WALL", SDL_WINDOWPOS_UNDEFINED,
 			SDL_WINDOWPOS_UNDEFINED, SCREEN_W, SCREEN_H, 0);
 	if (!init->window)
@@ -15,6 +16,7 @@ int Init(sdlinit *init)
 		printf("Failed to create SDL window: %s\n", SDL_GetError());
 		return (0);
 	}
+	/*Creating an SDL renderer*/
 	init->renderer = SDL_CreateRenderer(init->window, -1,
 			SDL_RENDERER_PRESENTVSYNC);
 	if (!init->renderer)
@@ -23,6 +25,7 @@ int Init(sdlinit *init)
 		SDL_DestroyWindow(init->window);
 		return (0);
 	}
+	/*Creating an SDL texture*/
 	init->texture = SDL_CreateTexture(init->renderer, SDL_PIXELFORMAT_RGBA32,
 			SDL_TEXTUREACCESS_STREAMING, SCREEN_W, SCREEN_H);
 	if (!init->texture)
@@ -32,8 +35,10 @@ int Init(sdlinit *init)
 		SDL_DestroyWindow(init->window);
 		return (0);
 	}
-
+	/*Allocating memory to store data on the color of each pixel*/
 	init->pixels = (Uint32 *)malloc(SCREEN_W * SCREEN_H * sizeof(Uint32));
+
+	/*Player position, direction and view*/
 	init->player.x = 3.456;
 	init->player.y = 2.345;
 	init->player.dirX = 1;
