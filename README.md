@@ -1,4 +1,6 @@
-# Raycasting Game Engine
+# Raycasting Game Engine!
+[sccp](https://github.com/TZITA/MAZE_PROJECT/assets/104761243/9d4b10fb-dee2-45f3-82e8-85487ac4b0a4)
+
 This is a simple raycasting game engine written in C using SDL (Simple DirectMedia Layer) library. The engine designed to have a basic first-person perspective game similar to Wolfenstein 3D.<br>
 
 ## How it Works
